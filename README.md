@@ -1,2 +1,2 @@
 # tdgsfszmCode
-Just do it.
+BZZ.
