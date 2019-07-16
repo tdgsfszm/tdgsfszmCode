@@ -257,23 +257,23 @@ int main(int argc, char* argv[]) {
         return -1;
     }
 
-//    std::vector<Tensor> resized_tensors;
-//    tensorflow::string input_path = tensorflow::io::JoinPath(root_dir, image_path);
-//    LOG(INFO) << "the input_path is " << input_path;
-//    Status read_tensor_status = ReadTensorFromImageFile(input_path, input_height, input_width, input_mean,
-//                                                        input_std, &resized_tensors);
-//    if (!read_tensor_status.ok()) {
-//        LOG(INFO) << "read tensor status failed.";
-//        return -1;
-//    }
-//    const Tensor& resized_tensor = resized_tensors[0];
-//    LOG(INFO) << "resized_tensor.shape: " << resized_tensor.shape();
+    // std::vector<Tensor> resized_tensors;
+    //     tensorflow::string input_path = tensorflow::io::JoinPath(root_dir, image_path);
+    //     LOG(INFO) << "the input_path is " << input_path;
+    //     Status read_tensor_status = ReadTensorFromImageFile(input_path, input_height, input_width, input_mean,
+    //                                                         input_std, &resized_tensors);
+    // if (!read_tensor_status.ok()) {
+    //     LOG(INFO) << "read tensor status failed.";
+    //     return -1;
+    // }
+    // const Tensor& resized_tensor = resized_tensors[0];
+    // LOG(INFO) << "resized_tensor.shape: " << resized_tensor.shape();
 
-//    cv::Mat image = cv::imread(image_path, 1);
-//    cv::resize(image, image, cv::Size(input_height, input_width));
-//    tensorflow::Tensor resized_tensor;
-//    Mat2tfTensor(image, 0, 255, resized_tensor);
-//    LOG(INFO) << "resized_tensor.shape: " << resized_tensor.shape();
+    // cv::Mat image = cv::imread(image_path, 1);
+    // cv::resize(image, image, cv::Size(input_height, input_width));
+    // tensorflow::Tensor resized_tensor;
+    // Mat2tfTensor(image, 0, 255, resized_tensor);
+    // LOG(INFO) << "resized_tensor.shape: " << resized_tensor.shape();
 
     tensorflow::Tensor input_tensor(tensorflow::DT_FLOAT, TensorShape({BATCH_SIZE, input_width, input_height, 3}));
     Status mat2tensorSattus = getMatTensor(input_tensor, image_path, input_height, input_width);
