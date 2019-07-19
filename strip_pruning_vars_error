@@ -45,4 +45,18 @@ ValueError: Input 0 of node stem/cond/stem_batch1/cond_1/AssignMovingAvg/stem_ba
 solution: change the code in strip_pruning_vars_lib.py
 l138: graph_def = ops.get_default_graph().as_graph_def()
 add-----------------------------------------------------
-
+for node in input_graph_def.node:
+    if node.op == 'RefSwitch':
+        node.op = 'Switch'
+        for index in range(len(node.input)):
+            # the 'and "Switch" not in node.input[index]' is important
+            if 'moving_' in node.input[index] and "Switch" not in node.input[index]:
+                node.input[index] = node.input[index] + '/read'
+    elif node.op == 'AssignSub':
+        node.op = 'Sub'
+        if 'use_locking' in node.attr: del node.attr['use_locking']
+    elif node.op == 'AssignAdd':
+        node.op = 'Add'
+        if 'use_locking' in node.attr: del node.attr['use_locking']
+add-----------------------------------------------------
+l139: output_graph_def = graph_util.convert_variables_to_constants(sess, graph_def, output_node_names)
