@@ -13,6 +13,7 @@ def freeze_graph(input_checkpoint, output_graph):
         saver.restore(sess, input_checkpoint)
 
         # fix batch norm nodes' bug
+        # Using the tf.layers.batch_normalization rather the tf.contrib.layers.batch_norm may help? no test. 
         for node in input_graph_def.node:
             if node.op == 'RefSwitch':
                 node.op = 'Switch'
