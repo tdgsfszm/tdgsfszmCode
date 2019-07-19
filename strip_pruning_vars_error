@@ -1,0 +1,48 @@
+error information:
+xxx@xxx-OMEN-by-HP-Laptop-15-dc0xxx:~/PycharmProjects/SENet-Tensorflow-master/with_pruning/model$ /home/zmeng/PycharmProjects/tensorflow-master/bazel-out/k8-py2-opt/bin/tensorflow/contrib/model_pruning/strip_pruning_vars --checkpoint_path=. --output_node_name=final_fully_connected/final_fully_connected/_fc --filename=/home/zmeng/pruning_pb/SENet_inception_v2.pb2019-07-19 20:18:21.638724: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+W0719 20:18:21.640077 140710029272832 deprecation.py:323] From /home/zmeng/PycharmProjects/tensorflow-master/bazel-out/k8-py2-opt/bin/tensorflow/contrib/model_pruning/strip_pruning_vars.runfiles/org_tensorflow/tensorflow/python/training/saver.py:1276: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to check for files with this prefix.
+I0719 20:18:21.640667 140710029272832 saver.py:1280] Restoring parameters from Inception_resnet_v2.ckpt-20249
+W0719 20:18:22.865922 140710029272832 deprecation.py:323] From /home/zmeng/PycharmProjects/tensorflow-master/bazel-out/k8-py2-opt/bin/tensorflow/contrib/model_pruning/strip_pruning_vars.runfiles/org_tensorflow/tensorflow/contrib/model_pruning/python/strip_pruning_vars_lib.py:140: convert_variables_to_constants (from tensorflow.python.framework.graph_util_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.compat.v1.graph_util.convert_variables_to_constants`
+W0719 20:18:22.866094 140710029272832 deprecation.py:323] From /home/zmeng/PycharmProjects/tensorflow-master/bazel-out/k8-py2-opt/bin/tensorflow/contrib/model_pruning/strip_pruning_vars.runfiles/org_tensorflow/tensorflow/python/framework/graph_util_impl.py:270: extract_sub_graph (from tensorflow.python.framework.graph_util_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.compat.v1.graph_util.extract_sub_graph`
+I0719 20:18:23.279192 140710029272832 graph_util_impl.py:311] Froze 493 variables.
+I0719 20:18:23.575292 140710029272832 graph_util_impl.py:364] Converted 493 variables to const ops.
+Traceback (most recent call last):
+  File "/home/zmeng/PycharmProjects/tensorflow-master/bazel-out/k8-py2-opt/bin/tensorflow/contrib/model_pruning/strip_pruning_vars.runfiles/org_tensorflow/tensorflow/python/framework/importer.py", line 428, in import_graph_def
+    graph._c_graph, serialized, options)  # pylint: disable=protected-access
+tensorflow.python.framework.errors_impl.InvalidArgumentError: Input 0 of node stem/cond/stem_batch1/cond_1/AssignMovingAvg/stem_batch1/moving_mean/stem_batch1/stem_batch1/moving_mean/Switch was passed float from stem_batch1/stem_batch1/moving_mean/biased:0 incompatible with expected float_ref.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/zmeng/PycharmProjects/tensorflow-master/bazel-out/k8-py2-opt/bin/tensorflow/contrib/model_pruning/strip_pruning_vars.runfiles/org_tensorflow/tensorflow/contrib/model_pruning/python/strip_pruning_vars.py", line 103, in <module>
+    app.run(main=main, argv=[sys.argv[0]] + unparsed)
+  File "/home/zmeng/PycharmProjects/tensorflow-master/bazel-out/k8-py2-opt/bin/tensorflow/contrib/model_pruning/strip_pruning_vars.runfiles/org_tensorflow/tensorflow/python/platform/app.py", line 40, in run
+    _run(main=main, argv=argv, flags_parser=_parse_flags_tolerate_undef)
+  File "/home/zmeng/PycharmProjects/tensorflow-master/bazel-out/k8-py2-opt/bin/tensorflow/contrib/model_pruning/strip_pruning_vars.runfiles/absl_py/absl/app.py", line 300, in run
+    _run_main(main, args)
+  File "/home/zmeng/PycharmProjects/tensorflow-master/bazel-out/k8-py2-opt/bin/tensorflow/contrib/model_pruning/strip_pruning_vars.runfiles/absl_py/absl/app.py", line 251, in _run_main
+    sys.exit(main(argv))
+  File "/home/zmeng/PycharmProjects/tensorflow-master/bazel-out/k8-py2-opt/bin/tensorflow/contrib/model_pruning/strip_pruning_vars.runfiles/org_tensorflow/tensorflow/contrib/model_pruning/python/strip_pruning_vars.py", line 78, in main
+    FLAGS.output_dir, FLAGS.filename)
+  File "/home/zmeng/PycharmProjects/tensorflow-master/bazel-out/k8-py2-opt/bin/tensorflow/contrib/model_pruning/strip_pruning_vars.runfiles/org_tensorflow/tensorflow/contrib/model_pruning/python/strip_pruning_vars.py", line 70, in strip_pruning_vars
+    initial_graph_def, output_node_names)
+  File "/home/zmeng/PycharmProjects/tensorflow-master/bazel-out/k8-py2-opt/bin/tensorflow/contrib/model_pruning/strip_pruning_vars.runfiles/org_tensorflow/tensorflow/contrib/model_pruning/python/strip_pruning_vars_lib.py", line 89, in strip_pruning_vars_fn
+    masked_weights_dict = _get_masked_weights(input_graph_def)
+  File "/home/zmeng/PycharmProjects/tensorflow-master/bazel-out/k8-py2-opt/bin/tensorflow/contrib/model_pruning/strip_pruning_vars.runfiles/org_tensorflow/tensorflow/contrib/model_pruning/python/strip_pruning_vars_lib.py", line 57, in _get_masked_weights
+    importer.import_graph_def(input_graph_def, name='')
+  File "/home/zmeng/PycharmProjects/tensorflow-master/bazel-out/k8-py2-opt/bin/tensorflow/contrib/model_pruning/strip_pruning_vars.runfiles/org_tensorflow/tensorflow/python/util/deprecation.py", line 507, in new_func
+    return func(*args, **kwargs)
+  File "/home/zmeng/PycharmProjects/tensorflow-master/bazel-out/k8-py2-opt/bin/tensorflow/contrib/model_pruning/strip_pruning_vars.runfiles/org_tensorflow/tensorflow/python/framework/importer.py", line 432, in import_graph_def
+    raise ValueError(str(e))
+ValueError: Input 0 of node stem/cond/stem_batch1/cond_1/AssignMovingAvg/stem_batch1/moving_mean/stem_batch1/stem_batch1/moving_mean/Switch was passed float from stem_batch1/stem_batch1/moving_mean/biased:0
+
+solution: change the code in strip_pruning_vars_lib.py
+l138: graph_def = ops.get_default_graph().as_graph_def()
+add-----------------------------------------------------
+
