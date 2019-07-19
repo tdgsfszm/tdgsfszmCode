@@ -60,3 +60,5 @@ for node in input_graph_def.node:
         if 'use_locking' in node.attr: del node.attr['use_locking']
 add-----------------------------------------------------
 l139: output_graph_def = graph_util.convert_variables_to_constants(sess, graph_def, output_node_names)
+
+# todo: no test now
